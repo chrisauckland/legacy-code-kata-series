@@ -54,5 +54,21 @@ namespace GildedRose.Tests
             app.UpdateQuality();
             Assert.AreEqual(8, app.Items[0].Quality);
         }
+
+        [Test]
+        public void QualityCannotBeANegativeNumber()
+        {
+            var app = new Program()
+            {
+                Items = new List<Item>
+                {
+                    new Item {Name = "Normal Item", SellIn = 10, Quality = 0}
+                }
+
+            };
+
+            app.UpdateQuality();
+            Assert.AreEqual(0, app.Items[0].Quality);
+        }
     }
 }
