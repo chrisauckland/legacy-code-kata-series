@@ -36,11 +36,9 @@ namespace GildedRose.Console
 
         public void UpdateQuality()
         {
-
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var currentItem in Items)
             {
                 var degredationRate = 1;
-                var currentItem = Items[i];
 
                 if (currentItem.Name.Contains("Conjured"))
                 {
