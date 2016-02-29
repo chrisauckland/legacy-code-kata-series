@@ -22,5 +22,21 @@ namespace GildedRose.Tests
 
             Assert.AreEqual(9,app.Items[0].Quality);
         }
+
+        [Test]
+        public void NormalItemsQualityNormallyWhenSellInIsAtOne()
+        {
+            var app = new Program()
+            {
+                Items = new List<Item>
+                {
+                    new Item {Name = "Normal Item", SellIn = 1, Quality = 10}
+                }
+
+            };
+
+            app.UpdateQuality();
+            Assert.AreEqual(9, app.Items[0].Quality);
+        }
     }
 }
