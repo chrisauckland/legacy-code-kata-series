@@ -22,5 +22,22 @@ namespace GildedRose.Tests
 
             Assert.AreEqual(8, app.Items[0].Quality);
         }
+
+        [Test]
+        public void ConjuredItemsQualityDegradesTwiceAsFastWhenPastSellInDate()
+        {
+            var app = new Program()
+            {
+                Items = new List<Item>
+                {
+                    new Item {Name = "Conjured Item", SellIn = 0, Quality = 10}
+                }
+
+            };
+
+            app.UpdateQuality();
+
+            Assert.AreEqual(6, app.Items[0].Quality);
+        }
     }
 }
