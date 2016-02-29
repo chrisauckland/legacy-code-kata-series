@@ -38,5 +38,21 @@ namespace GildedRose.Tests
             app.UpdateQuality();
             Assert.AreEqual(9, app.Items[0].Quality);
         }
+
+        [Test]
+        public void NormalItemsQualityDegradesTwiceAsFastWhenPastSellInDate()
+        {
+            var app = new Program()
+            {
+                Items = new List<Item>
+                {
+                    new Item {Name = "Normal Item", SellIn = 0, Quality = 10}
+                }
+
+            };
+
+            app.UpdateQuality();
+            Assert.AreEqual(8, app.Items[0].Quality);
+        }
     }
 }
