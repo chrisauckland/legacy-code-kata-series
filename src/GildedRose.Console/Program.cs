@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRose.Console
 {
-    internal class Program
+    public class Program
     {
-        private IList<Item> Items;
+        public IList<Item> Items;
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             System.Console.WriteLine("OMGHAI!");
 
