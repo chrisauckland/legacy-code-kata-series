@@ -96,7 +96,7 @@ namespace GildedRose.Console
                             {
                                 if (currentItem.Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    currentItem.Quality = currentItem.Quality - 1;
+                                    currentItem.Quality = currentItem.Quality - degredationRate;
                                 }
                             }
                         }
