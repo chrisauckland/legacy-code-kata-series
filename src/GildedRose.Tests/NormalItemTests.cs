@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace GildedRose.Tests
 {
-    public class ExampleTests
+    public class NormalItemTests
     {
         [Test]
         public void NormalItemsDegradeByOneEachIteration()
