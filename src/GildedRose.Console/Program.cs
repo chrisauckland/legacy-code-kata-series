@@ -115,19 +115,19 @@ namespace GildedRose.Console
 
             if (item.SellIn < 0)
             {
-                HandleOutOfDateItem(item, name);
+                HandleOutOfDateItem(item);
             }
         }
 
-        private static void HandleOutOfDateItem(Item item, string name)
+        private static void HandleOutOfDateItem(Item item)
         {
-            if (name != c_AgedBrie)
+            if (item.Name != c_AgedBrie)
             {
-                if (name != c_BackstagePassesToConcert)
+                if (item.Name != c_BackstagePassesToConcert)
                 {
                     if (item.Quality > 0)
                     {
-                        if (name != c_SulfurasHandOfRagnaros)
+                        if (item.Name != c_SulfurasHandOfRagnaros)
                         {
                             item.Quality = item.Quality - 1;
                         }
