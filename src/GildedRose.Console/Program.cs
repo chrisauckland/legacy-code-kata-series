@@ -94,7 +94,7 @@ namespace GildedRose.Console
                 {
                     if (name != c_SulfurasHandOfRagnaros)
                     {
-                        item.Quality = item.Quality - 1;
+                        ReduceQualityByOne(item);
                     }
                 }
             }
@@ -108,6 +108,11 @@ namespace GildedRose.Console
             {
                 HandleOutOfDateItem(item, name);
             }
+        }
+
+        private static void ReduceQualityByOne(Item item)
+        {
+            item.Quality = item.Quality - 1;
         }
 
         private static void HandleOutOfDateItem(Item item, string name)
