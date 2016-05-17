@@ -81,18 +81,12 @@ namespace GildedRose.Console
                     {
                         if (item.SellIn < 11)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            IncreaseQualityWhenBelowMaxQuality(item);
                         }
 
                         if (item.SellIn < 6)
                         {
-                            if (item.Quality < 50)
-                            {
-                                item.Quality = item.Quality + 1;
-                            }
+                            IncreaseQualityWhenBelowMaxQuality(item);
                         }
                     }
                 }
@@ -115,11 +109,11 @@ namespace GildedRose.Console
 
             if (item.SellIn < 0)
             {
-                HandleOutOfDateItem(item);
+                HandleOutOfDateItem(item, name);
             }
         }
 
-        private static void HandleOutOfDateItem(Item item)
+        private static void HandleOutOfDateItem(Item item, string name)
         {
             if (item.Name != c_AgedBrie)
             {
@@ -140,11 +134,21 @@ namespace GildedRose.Console
             }
             else
             {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
+                IncreaseQualityWhenBelowMaxQuality(item);
             }
+        }
+
+        private static void IncreaseQualityWhenBelowMaxQuality(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                IncreaseQualityByOne(item);
+            }
+        }
+
+        private static void IncreaseQualityByOne(Item item)
+        {
+            item.Quality = item.Quality + 1;
         }
     }
 
