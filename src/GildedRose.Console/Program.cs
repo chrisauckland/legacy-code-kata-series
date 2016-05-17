@@ -63,75 +63,80 @@ namespace GildedRose.Console
         {
             foreach (var item in items)
             {
-                var name = item.Name;
+                UpdateItemQuality(item);
+            }
+        }
 
-                if (name == c_AgedBrie || name == c_BackstagePassesToConcert)
+        private static void UpdateItemQuality(Item item)
+        {
+            var name = item.Name;
+
+            if (name == c_AgedBrie || name == c_BackstagePassesToConcert)
+            {
+                if (item.Quality < 50)
                 {
-                    if (item.Quality < 50)
+                    item.Quality = item.Quality + 1;
+
+                    if (name == c_BackstagePassesToConcert)
                     {
-                        item.Quality = item.Quality + 1;
-
-                        if (name == c_BackstagePassesToConcert)
+                        if (item.SellIn < 11)
                         {
-                            if (item.SellIn < 11)
+                            if (item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
+                        }
 
-                            if (item.SellIn < 6)
+                        if (item.SellIn < 6)
+                        {
+                            if (item.Quality < 50)
                             {
-                                if (item.Quality < 50)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
                         }
                     }
                 }
-                else
+            }
+            else
+            {
+                if (item.Quality > 0)
                 {
-                    if (item.Quality > 0)
+                    if (name != c_SulfurasHandOfRagnaros)
                     {
-                        if (name != c_SulfurasHandOfRagnaros)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
+                        item.Quality = item.Quality - 1;
                     }
                 }
+            }
 
-                if (name != c_SulfurasHandOfRagnaros)
-                {
-                    item.SellIn = item.SellIn - 1;
-                }
+            if (name != c_SulfurasHandOfRagnaros)
+            {
+                item.SellIn = item.SellIn - 1;
+            }
 
-                if (item.SellIn < 0)
+            if (item.SellIn < 0)
+            {
+                if (name != c_AgedBrie)
                 {
-                    if (name != c_AgedBrie)
+                    if (name != c_BackstagePassesToConcert)
                     {
-                        if (name != c_BackstagePassesToConcert)
+                        if (item.Quality > 0)
                         {
-                            if (item.Quality > 0)
+                            if (name != c_SulfurasHandOfRagnaros)
                             {
-                                if (name != c_SulfurasHandOfRagnaros)
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
+                                item.Quality = item.Quality - 1;
                             }
-                        }
-                        else
-                        {
-                            item.Quality = item.Quality - item.Quality;
                         }
                     }
                     else
                     {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
+                        item.Quality = item.Quality - item.Quality;
+                    }
+                }
+                else
+                {
+                    if (item.Quality < 50)
+                    {
+                        item.Quality = item.Quality + 1;
                     }
                 }
             }
