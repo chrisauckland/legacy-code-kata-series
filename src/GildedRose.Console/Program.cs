@@ -90,13 +90,11 @@ namespace GildedRose.Console
             }
             else
             {
-                if (item.Quality > 0)
-                {
                     if (name != c_SulfurasHandOfRagnaros)
                     {
-                        ReduceQualityByOne(item);
+                        ReduceQualityWhenAboveMinQuality(item);
                     }
-                }
+    
             }
 
             if (name != c_SulfurasHandOfRagnaros)
@@ -106,7 +104,7 @@ namespace GildedRose.Console
 
             if (item.SellIn < 0)
             {
-                HandleOutOfDateItem(item, name);
+                HandleOutOfDateItem(item);
             }
         }
 
@@ -115,7 +113,7 @@ namespace GildedRose.Console
             item.Quality = item.Quality - 1;
         }
 
-        private static void HandleOutOfDateItem(Item item, string name)
+        private static void HandleOutOfDateItem(Item item)
         {
             if (item.Name != c_AgedBrie)
             {
@@ -145,6 +143,14 @@ namespace GildedRose.Console
             if (item.Quality < 50)
             {
                 IncreaseQualityByOne(item);
+            }
+        }
+
+        private static void ReduceQualityWhenAboveMinQuality(Item item)
+        {
+            if (item.Quality > 0)
+            {
+                ReduceQualityByOne(item);
             }
         }
 
