@@ -115,29 +115,34 @@ namespace GildedRose.Console
 
             if (item.SellIn < 0)
             {
-                if (name != c_AgedBrie)
+                HandleOutOfDateItem(item, name);
+            }
+        }
+
+        private static void HandleOutOfDateItem(Item item, string name)
+        {
+            if (name != c_AgedBrie)
+            {
+                if (name != c_BackstagePassesToConcert)
                 {
-                    if (name != c_BackstagePassesToConcert)
+                    if (item.Quality > 0)
                     {
-                        if (item.Quality > 0)
+                        if (name != c_SulfurasHandOfRagnaros)
                         {
-                            if (name != c_SulfurasHandOfRagnaros)
-                            {
-                                item.Quality = item.Quality - 1;
-                            }
+                            item.Quality = item.Quality - 1;
                         }
-                    }
-                    else
-                    {
-                        item.Quality = item.Quality - item.Quality;
                     }
                 }
                 else
                 {
-                    if (item.Quality < 50)
-                    {
-                        item.Quality = item.Quality + 1;
-                    }
+                    item.Quality = item.Quality - item.Quality;
+                }
+            }
+            else
+            {
+                if (item.Quality < 50)
+                {
+                    item.Quality = item.Quality + 1;
                 }
             }
         }
