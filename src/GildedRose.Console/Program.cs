@@ -63,39 +63,40 @@ namespace GildedRose.Console
         {
             for (var i = 0; i < items.Length; i++)
             {
-                var name = items[i].Name;
+                var item = items[i];
+                var name = item.Name;
                 
                 if (name != c_AgedBrie && name != c_BackstagePassesToConcert)
                 {
-                    if (items[i].Quality > 0)
+                    if (item.Quality > 0)
                     {
                         if (name != c_SulfurasHandOfRagnaros)
                         {
-                            items[i].Quality = items[i].Quality - 1;
+                            item.Quality = item.Quality - 1;
                         }
                     }
                 }
                 else
                 {
-                    if (items[i].Quality < 50)
+                    if (item.Quality < 50)
                     {
-                        items[i].Quality = items[i].Quality + 1;
+                        item.Quality = item.Quality + 1;
 
                         if (name == c_BackstagePassesToConcert)
                         {
-                            if (items[i].SellIn < 11)
+                            if (item.SellIn < 11)
                             {
-                                if (items[i].Quality < 50)
+                                if (item.Quality < 50)
                                 {
-                                    items[i].Quality = items[i].Quality + 1;
+                                    item.Quality = item.Quality + 1;
                                 }
                             }
 
-                            if (items[i].SellIn < 6)
+                            if (item.SellIn < 6)
                             {
-                                if (items[i].Quality < 50)
+                                if (item.Quality < 50)
                                 {
-                                    items[i].Quality = items[i].Quality + 1;
+                                    item.Quality = item.Quality + 1;
                                 }
                             }
                         }
@@ -104,33 +105,33 @@ namespace GildedRose.Console
 
                 if (name != c_SulfurasHandOfRagnaros)
                 {
-                    items[i].SellIn = items[i].SellIn - 1;
+                    item.SellIn = item.SellIn - 1;
                 }
 
-                if (items[i].SellIn < 0)
+                if (item.SellIn < 0)
                 {
                     if (name != c_AgedBrie)
                     {
                         if (name != c_BackstagePassesToConcert)
                         {
-                            if (items[i].Quality > 0)
+                            if (item.Quality > 0)
                             {
                                 if (name != c_SulfurasHandOfRagnaros)
                                 {
-                                    items[i].Quality = items[i].Quality - 1;
+                                    item.Quality = item.Quality - 1;
                                 }
                             }
                         }
                         else
                         {
-                            items[i].Quality = items[i].Quality - items[i].Quality;
+                            item.Quality = item.Quality - item.Quality;
                         }
                     }
                     else
                     {
-                        if (items[i].Quality < 50)
+                        if (item.Quality < 50)
                         {
-                            items[i].Quality = items[i].Quality + 1;
+                            item.Quality = item.Quality + 1;
                         }
                     }
                 }
