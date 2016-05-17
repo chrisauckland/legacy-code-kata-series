@@ -73,21 +73,18 @@ namespace GildedRose.Console
 
             if (name == c_AgedBrie || name == c_BackstagePassesToConcert)
             {
-                if (item.Quality < 50)
+                IncreaseQualityWhenBelowMaxQuality(item);
+
+                if (name == c_BackstagePassesToConcert)
                 {
-                    item.Quality = item.Quality + 1;
-
-                    if (name == c_BackstagePassesToConcert)
+                    if (item.SellIn < 11)
                     {
-                        if (item.SellIn < 11)
-                        {
-                            IncreaseQualityWhenBelowMaxQuality(item);
-                        }
+                        IncreaseQualityWhenBelowMaxQuality(item);
+                    }
 
-                        if (item.SellIn < 6)
-                        {
-                            IncreaseQualityWhenBelowMaxQuality(item);
-                        }
+                    if (item.SellIn < 6)
+                    {
+                        IncreaseQualityWhenBelowMaxQuality(item);
                     }
                 }
             }
