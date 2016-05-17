@@ -118,7 +118,7 @@ namespace GildedRose.Tests
 
         private void UpdateItem(Item item)
         {
-            Program.UpdateQuality(new[] { item });
+            Program.UpdateItemsQuality(new[] { item });
         }
     }
 }

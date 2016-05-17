@@ -41,7 +41,7 @@ namespace GildedRose.Console
                 }
             };
 
-            app.UpdateQuality();
+            app.UpdateItemsQuality();
 
             PrintItems(app);
         }
@@ -54,12 +54,12 @@ namespace GildedRose.Console
             }
         }
 
-        public void UpdateQuality()
+        public void UpdateItemsQuality()
         {
-            UpdateQuality(Items.ToArray());
+            UpdateItemsQuality(Items.ToArray());
         }
 
-        public static void UpdateQuality(Item[] items)
+        public static void UpdateItemsQuality(Item[] items)
         {
             foreach (var item in items)
             {
