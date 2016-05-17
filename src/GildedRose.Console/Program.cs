@@ -8,6 +8,10 @@ namespace GildedRose.Console
     {
         private IList<Item> Items;
 
+        private const string c_AgedBrie = "Aged Brie";
+        private const string c_BackstagePassesToConcert = "Backstage passes to a TAFKAL80ETC concert";
+        private const string c_SulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
+
         internal static void Main(string[] args)
         {
             UpdateAndPrintItems();
@@ -60,15 +64,12 @@ namespace GildedRose.Console
             for (var i = 0; i < items.Length; i++)
             {
                 var name = items[i].Name;
-                var agedBrie = "Aged Brie";
-                var backstagePassesToATafkal80etcConcert = "Backstage passes to a TAFKAL80ETC concert";
-                var sulfurasHandOfRagnaros = "Sulfuras, Hand of Ragnaros";
-
-                if (name != agedBrie && name != backstagePassesToATafkal80etcConcert)
+                
+                if (name != c_AgedBrie && name != c_BackstagePassesToConcert)
                 {
                     if (items[i].Quality > 0)
                     {
-                        if (name != sulfurasHandOfRagnaros)
+                        if (name != c_SulfurasHandOfRagnaros)
                         {
                             items[i].Quality = items[i].Quality - 1;
                         }
@@ -80,7 +81,7 @@ namespace GildedRose.Console
                     {
                         items[i].Quality = items[i].Quality + 1;
 
-                        if (name == backstagePassesToATafkal80etcConcert)
+                        if (name == c_BackstagePassesToConcert)
                         {
                             if (items[i].SellIn < 11)
                             {
@@ -101,20 +102,20 @@ namespace GildedRose.Console
                     }
                 }
 
-                if (name != sulfurasHandOfRagnaros)
+                if (name != c_SulfurasHandOfRagnaros)
                 {
                     items[i].SellIn = items[i].SellIn - 1;
                 }
 
                 if (items[i].SellIn < 0)
                 {
-                    if (name != agedBrie)
+                    if (name != c_AgedBrie)
                     {
-                        if (name != backstagePassesToATafkal80etcConcert)
+                        if (name != c_BackstagePassesToConcert)
                         {
                             if (items[i].Quality > 0)
                             {
-                                if (name != sulfurasHandOfRagnaros)
+                                if (name != c_SulfurasHandOfRagnaros)
                                 {
                                     items[i].Quality = items[i].Quality - 1;
                                 }
