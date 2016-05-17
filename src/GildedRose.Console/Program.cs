@@ -61,9 +61,8 @@ namespace GildedRose.Console
 
         public static void UpdateQuality(Item[] items)
         {
-            for (var i = 0; i < items.Length; i++)
+            foreach (var item in items)
             {
-                var item = items[i];
                 var name = item.Name;
 
                 if (name == c_AgedBrie || name == c_BackstagePassesToConcert)
